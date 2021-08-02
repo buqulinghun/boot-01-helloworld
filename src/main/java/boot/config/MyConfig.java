@@ -4,6 +4,7 @@ import boot.bean.Pet;
 import boot.bean.User;
 import ch.qos.logback.core.db.DBHelper;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -20,7 +21,8 @@ import org.springframework.context.annotation.Import;
 public class MyConfig {
 
     @Bean
-    @ConditionalOnBean(name="tom01")
+   // @ConditionalOnBean(name="tom01")
+    @ConditionalOnMissingBean(name="tom01")
     public User user01() {
         User user = new User("zhangsan", 18);
         return user;
