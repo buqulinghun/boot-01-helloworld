@@ -1,11 +1,13 @@
 package boot;
 
+import boot.bean.Car;
 import boot.bean.Pet;
 import boot.bean.User;
 import boot.config.MyConfig;
 import ch.qos.logback.core.db.DBHelper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -14,6 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @SpringBootApplication:这是一个SpringBoot应用
  */
 @SpringBootApplication
+@EnableConfigurationProperties(Car.class)//1、开启car的配置绑定 2、把 这个Car 自动注册到容器中
 public class MainApllication {
     public static void main(String[] args) {
         ConfigurableApplicationContext run = SpringApplication.run(MainApllication.class, args);
@@ -44,12 +47,14 @@ public class MainApllication {
         DBHelper bean1 = run.getBean(DBHelper.class);
         System.out.println(bean1);
         */
-
+        /*
         User user04 = run.getBean("user01", User.class);
         System.out.println("user04:"+user04);
         
         Pet pet01 = run.getBean("tom01", Pet.class);
         System.out.println("pet01:"+pet01);
+        */
+
 
 
     }
